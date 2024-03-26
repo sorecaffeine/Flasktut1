@@ -1,0 +1,35 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title></title>
+            <meta name="description" content="">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="{{ url_for('static', filename='static/style.css') }}">
+
+        <title> Table </title>
+    </head> 
+    <body>
+        <div align="leftmost">
+            <form action="/table" method="post">
+                <input type="number" min="0" name="x" placeholder="Enter column for X-axis (e.g., 0 for leftmost)">
+                <input type="number" min="0" name="y" placeholder="Enter column for Y-axis (e.g., 0 for leftmost)">
+                <input type="submit" value="Graph">
+            </form>
+            </div> 
+        <div align="center"> 
+            <table> 
+                <h1> 
+                <!--Displaying the converted table-->
+                     {% for table in tables %} 
+                    <h2>{{titles[loop.index]}}</h2>                             
+                    {{ table|safe }} 
+                    {% endfor %}      
+                </h1>  
+            </table> 
+
+        </div> 
+    </body> 
+</html>
